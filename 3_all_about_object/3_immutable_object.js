@@ -17,7 +17,7 @@ const yuJin = {
 console.log(yuJin);
 
 /**
- * Extensible
+ * Extensible - 확장 가능한지
  */
 console.log(Object.isExtensible(yuJin));
 
@@ -29,9 +29,10 @@ Object.preventExtensions(yuJin);
 
 console.log(Object.isExtensible(yuJin));
 
-yuJin['groupName'] = '아이브';
+yuJin['groupName'] = '아이브'; // 추가 안됨
 console.log(yuJin);
 
+// 삭제는 할 수 있고 추가만 할 수 없다.
 delete yuJin['position'];
 console.log(yuJin);
 
@@ -52,7 +53,7 @@ const yuJin2 = {
 }
 console.log(yuJin2);
 
-console.log(Object.isSealed(yuJin2));
+console.log(Object.isSealed(yuJin2)); // 기본값은 false
 
 Object.seal(yuJin2);
 
@@ -61,6 +62,8 @@ console.log(Object.isSealed(yuJin2));
 yuJin2['groupName'] = '아이브';
 console.log(yuJin2);
 
+// seal(봉인) 하면 추가/삭제 불가상태가 된다.
+// seal은 configurable이 false로 변경된다.
 delete yuJin2['name'];
 console.log(yuJin2);
 
@@ -100,6 +103,7 @@ console.log(yuJin3);
 // Object.defineProperty(yuJin3, 'name', {
 //     value: '코드팩토리',
 // })
+// freeze는 enumerable 뺴고 전부 false가 된다.
 console.log(Object.getOwnPropertyDescriptor(yuJin3, 'name'));
 
 const yuJin4 = {
@@ -111,6 +115,7 @@ const yuJin4 = {
     },
 };
 Object.freeze(yuJin4);
+// 상위 object를 freeze를 했다고해서 하위 object도 freeze가 되는것은 아님(Extensible, Seal도 마찬가지)
 
 console.log(Object.isFrozen(yuJin4));
 console.log(Object.isFrozen(yuJin4['wonYoung']));
