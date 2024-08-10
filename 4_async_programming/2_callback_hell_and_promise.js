@@ -33,7 +33,7 @@ const timeoutPromise = new Promise((resolve, reject) => {
     }, 2000);
 });
 
-// timeoutPromise.then((res) => {
+// timeoutPromise.then((res) => { // res 파라미터는 resolve에 넣어준 값
 //     console.log('---then---');
 //     console.log(res);
 // });
@@ -69,3 +69,4 @@ Promise.all([
 ]).then((res)=>{
     console.log(res);
 });
+// 작업 동시 실행, 다 끝난 다음 then 또는 catch 실행됨
